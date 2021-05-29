@@ -61,3 +61,13 @@ if __name__ == "__main__":
     ad = snap.all_data()
     coordinatesDM = ad[("Halo","Coordinates")]
     velocitiesDM = ad[("Halo","Velocities")]
+    p=np.array(coordinatesDM)
+    v=np.array(velocitiesDM)
+    #print(p[:,1].shape)
+    #print(p[1:])
+    px=p[:,0]
+    py=p[:,1]
+    pz=p[:,2]
+    pVx=v[:,0]
+    pVy=v[:,1]
+    pVz=v[:,2]
