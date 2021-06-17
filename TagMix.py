@@ -143,7 +143,7 @@ if __name__ == "__main__":
             #quicksort(BE2)
             #BErev=BE2[::-1] #reverse it
             #print(BE)
-            BELimit=BE[:][tagLimit] #what is there are amny particles at the same BE?
+            BELimit=BE[0][tagLimit] #what is there are amny particles at the same BE?
             print(BELimit.shape)
             pxtag=pxh[BE<BELimit]
             pytag=pyh[BE<BELimit]
