@@ -151,9 +151,9 @@ if __name__ == "__main__":
             #BELimit=BE[0][tagLimit] #what is there are amny particles at the same BE?
             BELimit=BE[tagLimit]
             print("BELimit:%g"%BELimit)
-            pxtag=pxh[BE2<=BELimit]
-            pytag=pyh[BE2<=BELimit]
-            pztag=pzh[BE2<=BELimit]
+            pxtag=pxh[BE<=BELimit]
+            pytag=pyh[BE<=BELimit]
+            pztag=pzh[BE<=BELimit]
             print(" # of most bound Ps:%d"%len(pxtag))
             pSM=[0.0]*len(pxtag)
             pZZ=[0.0]*len(pxtag)
