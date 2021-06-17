@@ -144,7 +144,7 @@ if __name__ == "__main__":
             #BErev=BE2[::-1] #reverse it
             #print(BE)
             BELimit=BE[0][tagLimit] #what is there are amny particles at the same BE?
-            print(BELimit.shape)
+            print(BELimit)
             pxtag=pxh[BE<BELimit]
             pytag=pyh[BE<BELimit]
             pztag=pzh[BE<BELimit]
