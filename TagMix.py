@@ -86,7 +86,7 @@ if __name__ == "__main__":
     velocitiesDM = ad[("Halo","Velocities")]
     IDDM = ad[("Halo","ParticleIDs")]
     #BEDM = ad[("Halo","BindingEnergy")]
-    print(sorted(snap.field_list))
+    #print(sorted(snap.field_list))
     p=np.array(coordinatesDM)
     v=np.array(velocitiesDM)
     Id=np.array(IDDM)
@@ -123,7 +123,7 @@ if __name__ == "__main__":
             #PotE=[0.0]*size
             #KinE=[0.0]*size
             BE=[0.0]*size
-            print(BE.len)
+            print(np.array(BE).shape)
             rh=r[r<rLim]
             c=0
             for j in Idh:
@@ -139,7 +139,7 @@ if __name__ == "__main__":
             BE2=BE#np.array(np.sort(BE))
             BE.sort(key=lambda x: x[0],reverse=True)
             #print(BE.shape)
-            print(BE.len)
+            print(np.array(BE).shape)
             #quicksort(BE2)
             #BErev=BE2[::-1] #reverse it
             #print(BE)
