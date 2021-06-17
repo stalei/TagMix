@@ -99,7 +99,7 @@ if __name__ == "__main__":
     pVy=v[:,1]
     pVz=v[:,2]
     print("Total number of galaxies:%d"%len(Gx0))
-    hf = h5.File('s1.h5', 'w')
+    #hf = h5.File('s1.h5', 'w')
     for i in range(0,len(Gx0)):
         if True:
             print(i)
@@ -156,8 +156,8 @@ if __name__ == "__main__":
                 pZZ[k]= MetalStellarG0[i]/GSM0[i]
                 pAge[k]=1
             #AllStars[id].ZZ=SageOutput[galaxy].MetalsStellarMass/SageOutput[galaxy].StellarMass
-            #hf = h5.File('%s.h5' %str(Id[i]), 'w')
+            hf = h5.File('%s.h5' %str(Id[i]), 'w')
             hf.create_dataset('X', data=pxtag)
             hf.create_dataset('Y', data=pytag)
             hf.create_dataset('Z', data=pztag)
-        hf.close()
+            hf.close()
