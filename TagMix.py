@@ -136,13 +136,13 @@ if __name__ == "__main__":
                 BE[c]=np.sum(1./rp)+0.5*(pVxh*pVxh+pVyh*pVyh+pVzh*pVzh)#PotE[c]+KinE[c]
                 c+=1
             BE2=BE#np.array(np.sort(BE))
-            BE2.sort(key=lambda x: x[0],reverse=True)
+            BE.sort(key=lambda x: x[0],reverse=True)
             #print(BE.shape)
-            print(BE2)
+            print(BE)
             #quicksort(BE2)
-            BErev=BE2[::-1] #reverse it
-            print(BErev)
-            BELimit=BErev[tagLimit] #what is there are amny particles at the same BE?
+            #BErev=BE2[::-1] #reverse it
+            #print(BE)
+            BELimit=BE[tagLimit] #what is there are amny particles at the same BE?
             print(BELimit.shape)
             pxtag=pxh[BE<BELimit]
             pytag=pyh[BE<BELimit]
