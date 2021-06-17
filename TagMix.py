@@ -133,7 +133,8 @@ if __name__ == "__main__":
                 dxp=pxh[Idh==j]-pxh[Idh !=j]
                 dyp=pyh[Idh==j]-pyh[Idh !=j]
                 dzp=pzh[Idh==j]-pzh[Idh !=j]
-                #vx=float(pVxh[Idh==j])
+                vx=float(pVxh[Idh==j])
+                print("vx:%g"%vx)
                 #rp2=dxp*dxp+dyp*dyp+dzp*dzp
                 rp=np.sqrt(dxp*dxp+dyp*dyp+dzp*dzp)
                 #PotE[c]=np.sum(1./rp)
