@@ -109,25 +109,27 @@ if __name__ == "__main__":
             dz=pz-Gz0[i]
             r2=dx*dx+dy*dy+dz*dz
             r=np.sqrt(r2)
-            Pcount=len(r[r<GRv0[i]])
+            Pcount=len(r[r<=GRv0[i]])
             tagLimit=int((args.fraction/100.)*Pcount)
-            if tagLimit==0:
-                tagLimit=1
+            if tagLimit>Pcount:
+                tagLimit=Pcount
+            #if tagLimit==0:
+            #    tagLimit=1
             rLim=GRv0[i]
-            pxh=px[r<rLim]
-            pyh=py[r<rLim]
-            pzh=pz[r<rLim]
-            pVxh=pVx[r<rLim]
-            pVyh=pVy[r<rLim]
-            pVzh=pVz[r<rLim]
-            Idh=Id[r<rLim]
+            pxh=px[r<=rLim]
+            pyh=py[r<=rLim]
+            pzh=pz[r<=rLim]
+            pVxh=pVx[r<=rLim]
+            pVyh=pVy[r<=rLim]
+            pVzh=pVz[r<=rLim]
+            Idh=Id[r<=rLim]
             size=len(pxh)
             print("Ps in Rv:%d"%size)
             #PotE=[0.0]*size
             #KinE=[0.0]*size
             BE=[0.0]*size
             print(np.array(BE).shape)
-            rh=r[r<rLim]
+            rh=r[r<=rLim]
             c=0
             for j in Idh:
                 dxp=pxh[Idh==j]-pxh[Idh !=j]
