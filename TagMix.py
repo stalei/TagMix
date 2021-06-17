@@ -99,6 +99,7 @@ if __name__ == "__main__":
     pVy=v[:,1]
     pVz=v[:,2]
     print("Total number of galaxies:%d"%len(Gx0))
+    hf = h5.File('s1.h5', 'w')
     for i in range(0,len(Gx0)):
         if True:
             print(i)
@@ -119,8 +120,8 @@ if __name__ == "__main__":
             pVzh=pVz[r<rLim]
             Idh=Id[r<rLim]
             size=len(pxh)
-            PotE=[0.0]*size
-            KinE=[0.0]*size
+            #PotE=[0.0]*size
+            #KinE=[0.0]*size
             BE=[0.0]*size
             rh=r[r<rLim]
             c=0
@@ -128,11 +129,11 @@ if __name__ == "__main__":
                 dxp=pxh[Idh==j]-pxh[Idh !=j]
                 dyp=pyh[Idh==j]-pyh[Idh !=j]
                 dzp=pzh[Idh==j]-pzh[Idh !=j]
-                rp2=dxp*dxp+dyp*dyp+dzp*dzp
-                rp=np.sqrt(rp2)
-                PotE[c]=np.sum(1./rp)
-                KinE[c]=0.5*(pVxh*pVxh+pVyh*pVyh+pVzh*pVzh)
-                BE[c]=PotE[c]+KinE[c]
+                #rp2=dxp*dxp+dyp*dyp+dzp*dzp
+                rp=np.sqrt(dxp*dxp+dyp*dyp+dzp*dzp)
+                #PotE[c]=np.sum(1./rp)
+                #KinE[c]=0.5*(pVxh*pVxh+pVyh*pVyh+pVzh*pVzh)
+                BE[c]=np.sum(1./rp)+0.5*(pVxh*pVxh+pVyh*pVyh+pVzh*pVzh)#PotE[c]+KinE[c]
                 c+=1
             BE2=np.array(np.sort(BE))
             #quicksort(BE2)
@@ -149,8 +150,8 @@ if __name__ == "__main__":
                 pZZ[k]= MetalStellarG0[i]/GSM0[i]
                 pAge[k]=1
             #AllStars[id].ZZ=SageOutput[galaxy].MetalsStellarMass/SageOutput[galaxy].StellarMass
-            hf = h5.File('%s.h5' %str(Id[i]), 'w')
+            #hf = h5.File('%s.h5' %str(Id[i]), 'w')
             hf.create_dataset('X', data=pxtag)
             hf.create_dataset('Y', data=pytag)
             hf.create_dataset('Z', data=pztag)
-            hf.close()
+        hf.close()
