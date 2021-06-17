@@ -134,12 +134,14 @@ if __name__ == "__main__":
                 dyp=pyh[Idh==j]-pyh[Idh !=j]
                 dzp=pzh[Idh==j]-pzh[Idh !=j]
                 vx=float(pVxh[Idh==j])
+                vx=float(pVyh[Idh==j])
+                vz=float(pVzh[Idh==j])
                 print("vx:%g"%vx)
                 #rp2=dxp*dxp+dyp*dyp+dzp*dzp
                 rp=np.sqrt(dxp*dxp+dyp*dyp+dzp*dzp)
                 #PotE[c]=np.sum(1./rp)
                 #KinE[c]=0.5*(pVxh*pVxh+pVyh*pVyh+pVzh*pVzh)
-                BE[c]=np.sum(1./rp)+0.5*(pVxh[Idh==j]*pVxh[Idh==j]+pVyh[Idh==j]*pVyh[Idh==j]+pVzh[Idh==j]*pVzh[Idh==j])#PotE[c]+KinE[c]
+                BE[c]=float(np.sum(1./rp)+0.5*(vx*vx+vy*vy+vz*vz))#PotE[c]+KinE[c]
                 c+=1
             print("counted:%d"%c)
             BE2=BE#np.array(np.sort(BE))
@@ -156,8 +158,8 @@ if __name__ == "__main__":
             #BELimit=BE[0][tagLimit] #what is there are amny particles at the same BE?
             BELimit=BE2[tagLimit]
             print("BELimit:%g"%BELimit)
-            print(BE[0][:])
-            pxtag=pxh[BE[0][:]>=BELimit]
+            #print(BE[0][:])
+            pxtag=pxh[BE>=BELimit]
             pytag=pyh[BE>=BELimit]
             pztag=pzh[BE>=BELimit]
             print(" # of most bound Ps:%d"%len(pxtag))
