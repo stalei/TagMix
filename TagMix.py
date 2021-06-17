@@ -136,7 +136,7 @@ if __name__ == "__main__":
                 #KinE[c]=0.5*(pVxh*pVxh+pVyh*pVyh+pVzh*pVzh)
                 BE[c]=np.sum(1./rp)+0.5*(pVxh*pVxh+pVyh*pVyh+pVzh*pVzh)#PotE[c]+KinE[c]
                 c+=1
-            BE2=BE#np.array(np.sort(BE))
+            BE2=BE[0][:]#np.array(np.sort(BE))
             BE.sort(key=lambda x: x[0],reverse=True)
             #print(BE.shape)
             print(np.array(BE).shape)
@@ -145,9 +145,9 @@ if __name__ == "__main__":
             #print(BE)
             BELimit=BE[0][tagLimit] #what is there are amny particles at the same BE?
             print(BELimit)
-            pxtag=pxh[BE<BELimit]
-            pytag=pyh[BE<BELimit]
-            pztag=pzh[BE<BELimit]
+            pxtag=pxh[BE2<BELimit]
+            pytag=pyh[BE2<BELimit]
+            pztag=pzh[BE2<BELimit]
             pSM=[0.0]*len(pxtag)
             pZZ=[0.0]*len(pxtag)
             pAge=[0.0]*len(pxtag)
