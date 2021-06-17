@@ -134,7 +134,7 @@ if __name__ == "__main__":
                 dyp=pyh[Idh==j]-pyh[Idh !=j]
                 dzp=pzh[Idh==j]-pzh[Idh !=j]
                 vx=float(pVxh[Idh==j])
-                vx=float(pVyh[Idh==j])
+                vy=float(pVyh[Idh==j])
                 vz=float(pVzh[Idh==j])
                 print("vx:%g"%vx)
                 #rp2=dxp*dxp+dyp*dyp+dzp*dzp
