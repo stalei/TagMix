@@ -138,6 +138,7 @@ if __name__ == "__main__":
             BE2=np.array(np.sort(BE))
             #quicksort(BE2)
             BErev=BE2[::-1] #reverse it
+            print(BErev)
             BELimit=BErev[tagLimit] #what is there are amny particles at the same BE?
             print(BELimit.shape)
             pxtag=pxh[BE<BELimit]
