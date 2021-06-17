@@ -144,7 +144,7 @@ if __name__ == "__main__":
             #BE.sort(key=lambda x: x[0],reverse=True)
             BE.sort(reverse=True)
             #print(BE.shape)
-            print(np.array(BE).shape)
+            print(BE)
             #quicksort(BE2)
             #BErev=BE2[::-1] #reverse it
             #print(BE)
