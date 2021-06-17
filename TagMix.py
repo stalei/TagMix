@@ -159,6 +159,7 @@ if __name__ == "__main__":
             BELimit=BE2[tagLimit]
             print("BELimit:%g"%BELimit)
             #print(BE[0][:])
+            BE=np.array(BE)
             pxtag=pxh[BE>=BELimit]
             pytag=pyh[BE>=BELimit]
             pztag=pzh[BE>=BELimit]
