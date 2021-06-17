@@ -133,6 +133,7 @@ if __name__ == "__main__":
                 dxp=pxh[Idh==j]-pxh[Idh !=j]
                 dyp=pyh[Idh==j]-pyh[Idh !=j]
                 dzp=pzh[Idh==j]-pzh[Idh !=j]
+                #vx=float(pVxh[Idh==j])
                 #rp2=dxp*dxp+dyp*dyp+dzp*dzp
                 rp=np.sqrt(dxp*dxp+dyp*dyp+dzp*dzp)
                 #PotE[c]=np.sum(1./rp)
@@ -154,8 +155,8 @@ if __name__ == "__main__":
             #BELimit=BE[0][tagLimit] #what is there are amny particles at the same BE?
             BELimit=BE2[tagLimit]
             print("BELimit:%g"%BELimit)
-            print(BE[:][0])
-            pxtag=pxh[BE>=BELimit]
+            print(BE[0][:])
+            pxtag=pxh[BE[0][:]>=BELimit]
             pytag=pyh[BE>=BELimit]
             pztag=pzh[BE>=BELimit]
             print(" # of most bound Ps:%d"%len(pxtag))
