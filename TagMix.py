@@ -140,20 +140,23 @@ if __name__ == "__main__":
                 BE[c]=np.sum(1./rp)+0.5*(pVxh[Idh==j]*pVxh[Idh==j]+pVyh[Idh==j]*pVyh[Idh==j]+pVzh[Idh==j]*pVzh[Idh==j])#PotE[c]+KinE[c]
                 c+=1
             print("counted:%d"%c)
-            #BE2=BE[0][:]#np.array(np.sort(BE))
+            BE2=BE#np.array(np.sort(BE))
             #BE.sort(key=lambda x: x[0],reverse=True)
-            BE.sort(reverse=True)
+            BE2.sort(reverse=True)
             #print(BE.shape)
+            print("before sort:")
             print(np.array(BE))
+            print("after sort:")
+            print(np.array(BE2))
             #quicksort(BE2)
             #BErev=BE2[::-1] #reverse it
             #print(BE)
             #BELimit=BE[0][tagLimit] #what is there are amny particles at the same BE?
-            BELimit=BE[tagLimit]
+            BELimit=BE2[tagLimit]
             print("BELimit:%g"%BELimit)
-            pxtag=pxh[BE<=BELimit]
-            pytag=pyh[BE<=BELimit]
-            pztag=pzh[BE<=BELimit]
+            pxtag=pxh[BE>=BELimit]
+            pytag=pyh[BE>=BELimit]
+            pztag=pzh[BE>=BELimit]
             print(" # of most bound Ps:%d"%len(pxtag))
             pSM=[0.0]*len(pxtag)
             pZZ=[0.0]*len(pxtag)
