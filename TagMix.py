@@ -135,8 +135,9 @@ if __name__ == "__main__":
                 #KinE[c]=0.5*(pVxh*pVxh+pVyh*pVyh+pVzh*pVzh)
                 BE[c]=np.sum(1./rp)+0.5*(pVxh*pVxh+pVyh*pVyh+pVzh*pVzh)#PotE[c]+KinE[c]
                 c+=1
-            BE2=np.array(np.sort(BE))
-            print(BE.shape)
+            BE2=BE#np.array(np.sort(BE))
+            BE2.sort(reverse=True)
+            #print(BE.shape)
             print(BE2.shape)
             #quicksort(BE2)
             BErev=BE2[::-1] #reverse it
