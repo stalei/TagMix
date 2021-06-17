@@ -111,6 +111,8 @@ if __name__ == "__main__":
             r=np.sqrt(r2)
             Pcount=len(r[r<GRv0[i]])
             tagLimit=int((args.fraction/100.)*Pcount)
+            if tagLimit==0:
+                tagLimit=1
             rLim=GRv0[i]
             pxh=px[r<rLim]
             pyh=py[r<rLim]
@@ -135,21 +137,24 @@ if __name__ == "__main__":
                 rp=np.sqrt(dxp*dxp+dyp*dyp+dzp*dzp)
                 #PotE[c]=np.sum(1./rp)
                 #KinE[c]=0.5*(pVxh*pVxh+pVyh*pVyh+pVzh*pVzh)
-                BE[c]=np.sum(1./rp)+0.5*(pVxh*pVxh+pVyh*pVyh+pVzh*pVzh)#PotE[c]+KinE[c]
+                BE[c]=np.sum(1./rp)+0.5*(pVxh[Idh==j]*pVxh[Idh==j]+pVyh[Idh==j]*pVyh[Idh==j]+pVzh[Idh==j]*pVzh[Idh==j])#PotE[c]+KinE[c]
                 c+=1
             print("counted:%d"%c)
-            BE2=BE[0][:]#np.array(np.sort(BE))
-            BE.sort(key=lambda x: x[0],reverse=True)
+            #BE2=BE[0][:]#np.array(np.sort(BE))
+            #BE.sort(key=lambda x: x[0],reverse=True)
+            BE.sort(reverse=True)
             #print(BE.shape)
             print(np.array(BE).shape)
             #quicksort(BE2)
             #BErev=BE2[::-1] #reverse it
             #print(BE)
-            BELimit=BE[0][tagLimit] #what is there are amny particles at the same BE?
-            print(BELimit)
-            pxtag=pxh[BE2<BELimit]
-            pytag=pyh[BE2<BELimit]
-            pztag=pzh[BE2<BELimit]
+            #BELimit=BE[0][tagLimit] #what is there are amny particles at the same BE?
+            BELimit=BE[tagLimit]
+            print("BELimit:%g"%BELimit)
+            pxtag=pxh[BE2<=BELimit]
+            pytag=pyh[BE2<=BELimit]
+            pztag=pzh[BE2<=BELimit]
+            print(" # of most bound Ps:%d"%len(pxtag))
             pSM=[0.0]*len(pxtag)
             pZZ=[0.0]*len(pxtag)
             pAge=[0.0]*len(pxtag)
