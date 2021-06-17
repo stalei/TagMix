@@ -120,6 +120,7 @@ if __name__ == "__main__":
             pVzh=pVz[r<rLim]
             Idh=Id[r<rLim]
             size=len(pxh)
+            print("Ps in Rv:%d"%size)
             #PotE=[0.0]*size
             #KinE=[0.0]*size
             BE=[0.0]*size
@@ -136,6 +137,7 @@ if __name__ == "__main__":
                 #KinE[c]=0.5*(pVxh*pVxh+pVyh*pVyh+pVzh*pVzh)
                 BE[c]=np.sum(1./rp)+0.5*(pVxh*pVxh+pVyh*pVyh+pVzh*pVzh)#PotE[c]+KinE[c]
                 c+=1
+            print("counted:%d"%c)
             BE2=BE[0][:]#np.array(np.sort(BE))
             BE.sort(key=lambda x: x[0],reverse=True)
             #print(BE.shape)
