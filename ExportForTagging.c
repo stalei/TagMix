@@ -269,7 +269,7 @@ int main()
 //High5M:
 //  /media/shahram/SD/Sample100Mpc/32251/High5M/r2/sage_out
 sprintf(SageDir,"/media/shahram/SD/Sample100Mpc/32251/High5M/r2/sage_out"); //49-264
-int i,s, LastSnap=5,FirstSnap=5;
+int i,s, LastSnap=6,FirstSnap=6;
 
 for(s=FirstSnap;s<=LastSnap;s++)
 {

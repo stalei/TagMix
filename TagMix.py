@@ -165,6 +165,7 @@ if __name__ == "__main__":
             pxtag=pxh[BE>=BELimit]
             pytag=pyh[BE>=BELimit]
             pztag=pzh[BE>=BELimit]
+            pIDtag=IDh[BE>=BELimit]
             print(" # of most bound Ps:%d"%len(pxtag))
             pSM=[0.0]*len(pxtag)
             pZZ=[0.0]*len(pxtag)
@@ -175,6 +176,7 @@ if __name__ == "__main__":
                 pAge[k]=1
             #AllStars[id].ZZ=SageOutput[galaxy].MetalsStellarMass/SageOutput[galaxy].StellarMass
             hf = h5.File('%s.h5' %str(Id[i]), 'w')
+            hf.create_dataset('ID', data=pIDtag)
             hf.create_dataset('X', data=pxtag)
             hf.create_dataset('Y', data=pytag)
             hf.create_dataset('Z', data=pztag)
