@@ -165,7 +165,7 @@ if __name__ == "__main__":
             pxtag=pxh[BE>=BELimit]
             pytag=pyh[BE>=BELimit]
             pztag=pzh[BE>=BELimit]
-            pIDtag=IDh[BE>=BELimit]
+            pIDtag=Idh[BE>=BELimit]
             print(" # of most bound Ps:%d"%len(pxtag))
             pSM=[0.0]*len(pxtag)
             pZZ=[0.0]*len(pxtag)
