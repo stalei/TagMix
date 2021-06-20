@@ -166,6 +166,12 @@ if __name__ == "__main__":
             pytag=pyh[BE>=BELimit]
             pztag=pzh[BE>=BELimit]
             pIDtag=Idh[BE>=BELimit]
+            #
+            pVxTag=pVxh[BE>=BELimit]
+            pVyTag=pVyh[BE>=BELimit]
+            pVzTag=pVzh[BE>=BELimit]
+            pGID=[i]*len(Idh)
+            #
             print(" # of most bound Ps:%d"%len(pxtag))
             pSM=[0.0]*len(pxtag)
             pZZ=[0.0]*len(pxtag)
@@ -180,6 +186,12 @@ if __name__ == "__main__":
             hf.create_dataset('X', data=pxtag)
             hf.create_dataset('Y', data=pytag)
             hf.create_dataset('Z', data=pztag)
+            #
+            hf.create_dataset('Vx', data=pVxTag)
+            hf.create_dataset('Vy', data=pVyTag)
+            hf.create_dataset('Vz', data=pVzTag)
+            hf.create_dataset('GID', data=pGID)
+            #
             hf.create_dataset('StellarMass', data=pSM)
             hf.create_dataset('Metallicity', data=pZZ)
             hf.create_dataset('Age', data=pAge)
