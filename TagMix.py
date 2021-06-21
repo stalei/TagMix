@@ -170,7 +170,7 @@ if __name__ == "__main__":
             pVxTag=pVxh[BE>=BELimit]
             pVyTag=pVyh[BE>=BELimit]
             pVzTag=pVzh[BE>=BELimit]
-            pGID=[i]*len(Idh)
+            pGID=[GIndex0[i]]*len(Idh)
             #
             print(" # of most bound Ps:%d"%len(pxtag))
             pSM=[0.0]*len(pxtag)
