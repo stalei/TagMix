@@ -51,7 +51,7 @@ if __name__ == "__main__":
     CentralG1=np.array(Gals1[:,9])
     MetalStellarG1=np.array(Gals1[:,10])
     #2nd galaxy file
-    Gals2=np.genfromtxt(args.GalFile1, delimiter = ',')
+    Gals2=np.genfromtxt(args.GalFile2, delimiter = ',')
     Gx2=np.array(Gals2[:,0])
     Gy2=np.array(Gals2[:,1])
     Gz2=np.array(Gals2[:,2])
@@ -64,17 +64,26 @@ if __name__ == "__main__":
     CentralG2=np.array(Gals2[:,9])
     MetalStellarG2=np.array(Gals2[:,10])
     for id in GIndex1:
-        dx=Gx2[GIndex2==id]-Gx1[GIndex1==id]
-        print("dx:%g"%dx)
-        Gx3=2.*(Gx2[GIndex2==id])-Gx1[GIndex1==id]
-        Gy3=2.*(Gy2[GIndex2==id])-Gy1[GIndex1==id]
-        Gz3=2.*(Gz2[GIndex2==id])-Gz1[GIndex1==id]
-        GMv3=2.*(GMv2[GIndex2==id])-GMv1[GIndex1==id]
-        GRv3=2.*(GRv2[GIndex2==id])-GRv1[GIndex1==id]
-        GS3=GS2[GIndex2==id]+1
-        GSM3=2.*(GSM2[GIndex2==id])-GSM1[GIndex1==id]
-        GIndex3=id
-        HIndex3=HIndex2[GIndex2==id]
-        CentralG3=CentralG2[GIndex2==id]
-        MetalStellarG3=2.*(MetalStellarG2[GIndex2==id])-MetalStellarG1[GIndex1==id]
-        print("%g,%g,%g,%g,%g,%d,%g,%d,%d,%d,%g"%(Gx3,Gy3,Gz3,GMv3,GRv3,GS3,GSM3,GIndex3,HIndex3,CentralG3,MetalStellarG3))
+        if len(Gx2[GIndex2==id])>0:
+            dx=Gx2[GIndex2==id]-Gx1[GIndex1==id]
+            #print("dx:%g"%dx)
+            Gx3=2.*(Gx2[GIndex2==id])-Gx1[GIndex1==id]
+            Gy3=2.*(Gy2[GIndex2==id])-Gy1[GIndex1==id]
+            Gz3=2.*(Gz2[GIndex2==id])-Gz1[GIndex1==id]
+            GMv3=np.abs(2.*(GMv2[GIndex2==id])-GMv1[GIndex1==id])
+            GRv3=2.*(GRv2[GIndex2==id])-GRv1[GIndex1==id]
+            if GRv3 < GRv2[GIndex2==id]/5:
+                GRv3=GRv2[GIndex2==id]
+            GS3=GS2[GIndex2==id]+1
+            GSM3=np.abs(2.*(GSM2[GIndex2==id])-GSM1[GIndex1==id])
+            GIndex3=id
+            HIndex3=HIndex2[GIndex2==id]
+            CentralG3=CentralG2[GIndex2==id]
+            MetalStellarG3=2.*(MetalStellarG2[GIndex2==id])-MetalStellarG1[GIndex1==id]
+            #print("id:%d"%id)
+            #print("G2:")
+            #print(GRv2[GIndex2==id])
+            #print("G1:")
+            #print(GRv1[GIndex1==id])
+            #print(GRv2[GIndex2==id]-GRv1[GIndex1==id])
+            print("%g,%g,%g,%g,%g,%d,%g,%d,%d,%d,%g"%(Gx3,Gy3,Gz3,GMv3,GRv3,GS3,GSM3,GIndex3,HIndex3,CentralG3,MetalStellarG3))

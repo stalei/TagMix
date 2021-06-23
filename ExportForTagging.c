@@ -255,6 +255,7 @@ return;
 }
 void ExportGalaxy(int snap,struct SageGalaxies *Output, int id)
 {
+  //snap=161;
   printf("%g,%g,%g,%g,%g,%d,%g,%d,%d,%d,%g\n",Output[id].Pos[0], Output[id].Pos[1],Output[id].Pos[2],Output[id].Mvir*(1.0e10),Output[id].Rvir,snap,Output[id].StellarMass*1.0e10,Output[id].GalaxyIndex,Output[id].HaloIndex,Output[id].CentralGal, Output[id].MetalsStellarMass);
 }
 

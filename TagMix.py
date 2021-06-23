@@ -113,7 +113,8 @@ if __name__ == "__main__":
             tagLimit=int((args.fraction/100.)*Pcount)
             if tagLimit>Pcount:
                 tagLimit=Pcount
-            #if tagLimit==0:
+            if Pcount==0:
+                continue
             #    tagLimit=1
             rLim=GRv0[i]
             pxh=px[r<=rLim]
