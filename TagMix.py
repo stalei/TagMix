@@ -66,6 +66,7 @@ if __name__ == "__main__":
     parser.add_argument("halo",type=str)
     parser.add_argument("GalFile",type=str)
     parser.add_argument("fraction",type=float)
+    parser.add_argument("Age",type=float)
     args = parser.parse_args()
     Gals=np.genfromtxt(args.GalFile, delimiter = ',')
     Gx0=np.array(Gals[:,0])
@@ -180,7 +181,7 @@ if __name__ == "__main__":
             for k in range(0,len(pxtag)):
                 pSM[k]=GSM0[i]/tagLimit
                 pZZ[k]= MetalStellarG0[i]/GSM0[i]
-                pAge[k]=1
+                pAge[k]=args.Age
             #AllStars[id].ZZ=SageOutput[galaxy].MetalsStellarMass/SageOutput[galaxy].StellarMass
             hf = h5.File('%s.h5' %str(Id[i]), 'w')
             hf.create_dataset('ID', data=pIDtag)

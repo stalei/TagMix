@@ -269,8 +269,8 @@ int main()
 //32251: 46-264
 //High5M:
 //  /media/shahram/SD/Sample100Mpc/32251/High5M/r2/sage_out
-sprintf(SageDir,"/media/shahram/SD/Sample100Mpc/32251/High5M/r2/sage_out"); //49-264
-int i,s, LastSnap=11,FirstSnap=11;
+sprintf(SageDir,"/media/shahram/SD/Sample100Mpc/32251/High5M/r5/sage_out"); //49-264
+int i,s, LastSnap=36,FirstSnap=36;
 
 for(s=FirstSnap;s<=LastSnap;s++)
 {
