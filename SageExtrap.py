@@ -39,6 +39,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     #Load first galaxy file
     Gals1=np.genfromtxt(args.GalFile1, delimiter = ',')
+    #print(np.array(Gals1[:,0]))
     Gx1=np.array(Gals1[:,0])
     Gy1=np.array(Gals1[:,1])
     Gz1=np.array(Gals1[:,2])
