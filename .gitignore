@@ -1,8 +1,6 @@
 *.csv
-<<<<<<< HEAD
 *.log
 *.h5
-=======
 sage_out
 *.txt
->>>>>>> ea9899e290cbe37f2fe9b52bf709b49d3aef3d0c
+*.log
