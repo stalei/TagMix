@@ -256,10 +256,11 @@ return;
 void ExportGalaxy(int snap,struct SageGalaxies *Output, int id)
 {
   //snap=161;
-  printf("%g,%g,%g,%g,%g,%d,%g,%d,%d,%d,%g\n",Output[id].Pos[0], Output[id].Pos[1],Output[id].Pos[2],Output[id].Mvir*(1.0e10),Output[id].Rvir,snap,Output[id].StellarMass*1.0e10,Output[id].GalaxyIndex,Output[id].HaloIndex,Output[id].CentralGal, Output[id].MetalsStellarMass);
+  printf("%g,%g,%g,%g,%g,%d,%g,%d,%d,%d,%g\n",Output[id].Pos[0], Output[id].Pos[1],Output[id].Pos[2],Output[id].Mvir*(1.0e10),Output[id].Rvir,snap,Output[id].StellarMass*1.0e10,Output[id].GalaxyIndex,Output[id].HaloIndex,Output[id].CentralGal, Output[id].MetalsStellarMass*(1.0e10));//,Output[id].Stars, Output[id].DiskScaleRadius); //should remove stars for current tagging
+
 }
 
-int main()
+int main(int argc, char * argv[])
 {
 //sprintf(SageDir,"/home/shahram/Desktop/Research/3_Tagging/ReadSage/sage_out");
 //838: 49-264
@@ -269,9 +270,12 @@ int main()
 //32251: 46-264
 //High5M:
 //  /media/shahram/SD/Sample100Mpc/32251/High5M/r2/sage_out
-sprintf(SageDir,"/media/shahram/SD/Sample100Mpc/32251/High5M/r5/sage_out"); //49-264
-int i,s, LastSnap=36,FirstSnap=36;
+//  /media/shahram/SD/Sample100Mpc/m12f/sage_out
 
+sprintf(SageDir,"/media/shahram/SD/Sample100Mpc/m12i/sage_out"); //49-264
+int i,s, LastSnap,FirstSnap;
+LastSnap= atoi(argv[2]);
+FirstSnap=atoi(argv[1]);
 for(s=FirstSnap;s<=LastSnap;s++)
 {
   ReadSage(s);
