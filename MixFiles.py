@@ -62,6 +62,7 @@ if __name__ == "__main__":
     print("Count:%d"%c)
     AllAge=[0.0]*c
     AllID=[0]*c
+    AllHID=[0]*c
     AllGID=[0]*c
     AllMetallicity=[0.0]*c
     AllStellarMass=[0.0]*c
@@ -82,27 +83,30 @@ if __name__ == "__main__":
             a_group_key = list(f.keys())[1]
             GID = list(f[a_group_key])
             a_group_key = list(f.keys())[2]
-            ID = list(f[a_group_key])
+            HID = list(f[a_group_key])
             a_group_key = list(f.keys())[3]
-            Metallicity= list(f[a_group_key])
+            ID = list(f[a_group_key])
             a_group_key = list(f.keys())[4]
-            StellarMass = list(f[a_group_key])
+            Metallicity= list(f[a_group_key])
             a_group_key = list(f.keys())[5]
-            Vx = list(f[a_group_key])
+            StellarMass = list(f[a_group_key])
             a_group_key = list(f.keys())[6]
-            Vy = list(f[a_group_key])
+            Vx = list(f[a_group_key])
             a_group_key = list(f.keys())[7]
-            Vz= list(f[a_group_key])
+            Vy = list(f[a_group_key])
             a_group_key = list(f.keys())[8]
-            x = list(f[a_group_key])
+            Vz= list(f[a_group_key])
             a_group_key = list(f.keys())[9]
-            y = list(f[a_group_key])
+            x = list(f[a_group_key])
             a_group_key = list(f.keys())[10]
+            y = list(f[a_group_key])
+            a_group_key = list(f.keys())[11]
             z = list(f[a_group_key])
             for j in range(0,len(age)):
                 AllAge[i]=age[j]
                 AllID[i]=ID[j]
                 AllGID[i]=GID[j]
+                AllHID[i]=HID[j]
                 AllMetallicity[i]=Metallicity[j]
                 AllStellarMass[i]=StellarMass[j]
                 AllVx[i]=Vx[j]
@@ -123,6 +127,7 @@ if __name__ == "__main__":
     hf.create_dataset('Vy', data=AllVy)
     hf.create_dataset('Vz', data=AllVz)
     hf.create_dataset('GID', data=AllGID)
+    hf.create_dataset('HID', data=AllHID)
     #
     hf.create_dataset('StellarMass', data=AllStellarMass)
     hf.create_dataset('Metallicity', data=AllMetallicity)
