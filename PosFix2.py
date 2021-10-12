@@ -53,34 +53,68 @@ if __name__ == "__main__":
         snap = yt.load(args.SnapFile)
         ad = snap.all_data()
         coordinatesDM = ad[("Halo","Coordinates")]
-        px=coordinatesDM[:,0]
-        py=coordinatesDM[:,1]
-        pz=coordinatesDM[:,2]
-        pID = ad[("Halo","ParticleIDs")]
-        S=len(ID)
+        px0=coordinatesDM[:,0]
+        py0=coordinatesDM[:,1]
+        pz0=coordinatesDM[:,2]
+        pID0 = ad[("Halo","ParticleIDs")]
+        #m12i: 29.3575,31.0276,32.4926,6.37801e+11,0.139977,264,5.1374e+10,0,0,0,3.99904e+08
+        gx=29.3575
+        gy=31.0276
+        gz=32.4926
+        Rv=0.139977
+        dpx=px0-gx
+        dpy=py0-gy
+        dpz=pz0-gz
+        rp=(dpx*dpx+dpy*dpy+dpz*dpz)**0.5
+        pID = PID0[rp<Rv]
+        px=px0[rp<Rv]
+        py=py0[rp<Rv]
+        pz=pz0[rp<Rv]
+        S=len(pID)
         newX=[0.0]*S
         newY=[0.0]*S
         newZ=[0.0]*S
+        newID[i]=[0]*S
+        newVx[i]=[0.0]*S
+        newVy[i]=[0.0]*S
+        newVz[i]=[0.0]*S
+        newGID[i]=[0.0]*S
+        newHID[i]=[0.0]*S
+        newStellarMass[i]=[0.0]*S
+        newMetallicity[i]=[0.0]*S
+        newAge[i]=[0.0]*S
         #i=0
         for i in range(0,S):
-            id =ID[i]
-            newX[i]=px[pID==id]
-            newY[i]=py[pID==id]
-            newZ[i]=pz[pID==id]
+            id =pID[i]
+            xx=px[pID==id]
+            yy=py[pID==id]
+            zz=pz[pID==id]
+            newX[i]=xx
+            newY[i]=yy
+            newZ[i]=zz
+            newID[i]=id
+            newVx[i]=Vx[ID==id]
+            newVy[i]=Vy[ID==id]
+            newVz[i]=Vz[ID==id]
+            newGID[i]=GID[ID==id]
+            newHID[i]=HID[ID==id]
+            newStellarMass[i]=StellarMass[ID==id]
+            newMetallicity[i]=Metallicity[ID==id]
+            newAge[i]=age[ID==id]
             #i+=1
-        hf = h5.File('AllTagsPosFixed.h5', 'w')
-        hf.create_dataset('ID', data=ID)
+        hf = h5.File('AllTagsPosFixed2.h5', 'w')
+        hf.create_dataset('ID', data=newID)
         hf.create_dataset('X', data=newX)
         hf.create_dataset('Y', data=newY)
         hf.create_dataset('Z', data=newZ)
         #
-        hf.create_dataset('Vx', data=Vx)
-        hf.create_dataset('Vy', data=Vy)
-        hf.create_dataset('Vz', data=Vz)
-        hf.create_dataset('GID', data=GID)
-        hf.create_dataset('HID', data=HID)
+        hf.create_dataset('Vx', data=newVx)
+        hf.create_dataset('Vy', data=newVy)
+        hf.create_dataset('Vz', data=newVz)
+        hf.create_dataset('GID', data=newGID)
+        hf.create_dataset('HID', data=newHID)
         #
-        hf.create_dataset('StellarMass', data=StellarMass)
-        hf.create_dataset('Metallicity', data=Metallicity)
-        hf.create_dataset('Age', data=age)
+        hf.create_dataset('StellarMass', data=newStellarMass)
+        hf.create_dataset('Metallicity', data=newMetallicity)
+        hf.create_dataset('Age', data=newAge)
         hf.close()
