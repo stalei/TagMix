@@ -78,30 +78,68 @@ if __name__ == "__main__":
         with h5.File(h5name, "r") as f:
             # List all groups
             print("Keys: %s" % f.keys())
-            a_group_key = list(f.keys())[0]
-            age = list(f[a_group_key])
-            a_group_key = list(f.keys())[1]
-            GID = list(f[a_group_key])
-            a_group_key = list(f.keys())[2]
-            HID = list(f[a_group_key])
-            a_group_key = list(f.keys())[3]
-            ID = list(f[a_group_key])
-            a_group_key = list(f.keys())[4]
-            Metallicity= list(f[a_group_key])
-            a_group_key = list(f.keys())[5]
-            StellarMass = list(f[a_group_key])
-            a_group_key = list(f.keys())[6]
-            Vx = list(f[a_group_key])
-            a_group_key = list(f.keys())[7]
-            Vy = list(f[a_group_key])
-            a_group_key = list(f.keys())[8]
-            Vz= list(f[a_group_key])
-            a_group_key = list(f.keys())[9]
-            x = list(f[a_group_key])
-            a_group_key = list(f.keys())[10]
-            y = list(f[a_group_key])
-            a_group_key = list(f.keys())[11]
-            z = list(f[a_group_key])
+            #a_group_key = list(f.keys())[0]
+            #age = list(f[a_group_key])
+            #a_group_key = list(f.keys())[1]
+            #GID = list(f[a_group_key])
+            #a_group_key = list(f.keys())[2]
+            #HID = list(f[a_group_key])
+            #a_group_key = list(f.keys())[3]
+            #ID = list(f[a_group_key])
+            #a_group_key = list(f.keys())[4]
+            #Metallicity= list(f[a_group_key])
+            #a_group_key = list(f.keys())[5]
+            #StellarMass = list(f[a_group_key])
+            #a_group_key = list(f.keys())[6]
+            #Vx = list(f[a_group_key])
+            #a_group_key = list(f.keys())[7]
+            #Vy = list(f[a_group_key])
+            #a_group_key = list(f.keys())[8]
+            #Vz= list(f[a_group_key])
+            #a_group_key = list(f.keys())[9]
+            #x = list(f[a_group_key])
+            #a_group_key = list(f.keys())[10]
+            #y = list(f[a_group_key])
+            #a_group_key = list(f.keys())[11]
+            #z = list(f[a_group_key])
+            print("Read keys")
+            f_key=list(f.keys())
+            a_group_key = f_key[0]
+            age =np.array(f[a_group_key])
+            print("0")
+            a_group_key = f_key[1]
+            GID = np.array(f[a_group_key])
+            print("1")
+            a_group_key = f_key[2]
+            HID = np.array(f[a_group_key])
+            print("2")
+            a_group_key = f_key[3]
+            ID =np.array(f[a_group_key])
+            print("3")
+            a_group_key = f_key[4]
+            Metallicity=np.array(f[a_group_key])
+            print("4")
+            a_group_key = f_key[5]
+            StellarMass =np.array(f[a_group_key])
+            print("5")
+            a_group_key = f_key[6]
+            Vx =np.array(f[a_group_key])
+            print("6")
+            a_group_key = f_key[7]
+            Vy =np.array(f[a_group_key])
+            print("7")
+            a_group_key = f_key[8]
+            Vz=np.array(f[a_group_key])
+            print("8")
+            a_group_key = f_key[9]
+            x =np.array(f[a_group_key])
+            print("9")
+            a_group_key = f_key[10]
+            y =np.array(f[a_group_key])
+            print("10")
+            a_group_key = f_key[11]
+            z =np.array(f[a_group_key])
+            print("11")
             for j in range(0,len(age)):
                 AllAge[i]=age[j]
                 AllID[i]=ID[j]
@@ -117,7 +155,8 @@ if __name__ == "__main__":
                 AllZ[i]=z[j]
                 i+=1
     print(np.array(AllAge).shape)
-    hf = h5.File('%s/AllTags.h5' %args.Folder, 'w')
+    #hf = h5.File('%s/AllTags.h5' %args.Folder, 'w')
+    hf = h5.File('AllTags.h5', 'w')
     hf.create_dataset('ID', data=AllID)
     hf.create_dataset('X', data=AllX)
     hf.create_dataset('Y', data=AllY)
