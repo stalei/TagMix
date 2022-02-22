@@ -272,7 +272,8 @@ int main(int argc, char * argv[])
 //  /media/shahram/SD/Sample100Mpc/32251/High5M/r2/sage_out
 //  /media/shahram/SD/Sample100Mpc/m12f/sage_out
 
-sprintf(SageDir,"/media/shahram/SD/Sample100Mpc/m12i/sage_out"); //49-264
+//sprintf(SageDir,"/media/shahram/SD/Sample100Mpc/m12i/sage_out"); //49-264
+sprintf(SageDir,"/media/shahram/SD/Sample100Mpc/m12b/sage/sage_out_1");
 int i,s, LastSnap,FirstSnap;
 LastSnap= atoi(argv[2]);
 FirstSnap=atoi(argv[1]);
